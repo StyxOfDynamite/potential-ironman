@@ -246,6 +246,41 @@ CONFIG;
                 $table->index('user_id');
             });
         }
+
+        /**
+         * create table invoices
+         */
+        if (!Capsule::schema()->hasTable('invoices')){
+            Capsule::schema()->create('invoices', function($table)
+            {
+                $table->increments('id');
+                $table->string('clientEmail');
+                $table->date('dueDate');
+                $table->boolean('reminders')->default(0);
+                $table->boolean('paid')->default(0);
+
+                // We'll need to ensure that MySQL uses the InnoDB engine to
+                // support the indexes, other engines aren't affected.
+                $table->engine = 'InnoDB';
+                $table->unique('clientEmail');
+            });
+        }
+        
+        /**
+         * create user-invoice relation
+         */
+        if (!Capsule::schema()->hasTable('user_invoices')){
+            Capsule::schema()->create('user_invoices', function($table)
+            {
+                $table->integer('user_id')->unsigned();
+                $table->integer('invoice_id')->unsigned();
+
+                // We'll need to ensure that MySQL uses the InnoDB engine to
+                // support the indexes, other engines aren't affected.
+                $table->engine = 'InnoDB';
+                $table->primary(array('user_id', 'invoice_id'));
+            });
+        }
     }
 
     /**
