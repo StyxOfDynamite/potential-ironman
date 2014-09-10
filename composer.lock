@@ -1,22 +1,23 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
     ],
-    "hash": "e8195652cf61a56e2f9b4b0e29bf3181",
+    "hash": "c0cf3e6221e66ab0574e6f657f9c5e66",
     "packages": [
         {
             "name": "cartalyst/sentry",
-            "version": "v2.1.2",
+            "version": "2.1.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cartalyst/sentry.git",
-                "reference": "7eba43edce31eb6485e2b2e4f3e700e322de80fa"
+                "reference": "57eb4ec33b342d621d8e7e499492f797443c0428"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cartalyst/sentry/zipball/7eba43edce31eb6485e2b2e4f3e700e322de80fa",
-                "reference": "7eba43edce31eb6485e2b2e4f3e700e322de80fa",
+                "url": "https://api.github.com/repos/cartalyst/sentry/zipball/57eb4ec33b342d621d8e7e499492f797443c0428",
+                "reference": "57eb4ec33b342d621d8e7e499492f797443c0428",
                 "shasum": ""
             },
             "require": {
@@ -103,28 +104,25 @@
                 "laravel",
                 "security"
             ],
-            "time": "2014-04-22 18:39:45"
+            "time": "2014-08-28 12:03:39"
         },
         {
             "name": "illuminate/container",
             "version": "dev-master",
-            "target-dir": "Illuminate/Container",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
-                "reference": "8dfc10a593dd2e7fd9fc10d8850f5e917f901cb4"
+                "reference": "2d2567e431dcabeba2d386fb3f68d91f92e0d257"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/container/zipball/8dfc10a593dd2e7fd9fc10d8850f5e917f901cb4",
-                "reference": "8dfc10a593dd2e7fd9fc10d8850f5e917f901cb4",
+                "url": "https://api.github.com/repos/illuminate/container/zipball/2d2567e431dcabeba2d386fb3f68d91f92e0d257",
+                "reference": "2d2567e431dcabeba2d386fb3f68d91f92e0d257",
                 "shasum": ""
             },
             "require": {
+                "illuminate/contracts": "4.3.*",
                 "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.0.*"
             },
             "type": "library",
             "extra": {
@@ -133,8 +131,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Illuminate\\Container": ""
+                "psr-4": {
+                    "Illuminate\\Container\\": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -144,43 +142,77 @@
             "authors": [
                 {
                     "name": "Taylor Otwell",
-                    "email": "taylorotwell@gmail.com",
-                    "homepage": "https://github.com/taylorotwell",
-                    "role": "Creator of Laravel"
+                    "email": "taylorotwell@gmail.com"
                 }
             ],
-            "time": "2014-05-09 18:22:55"
+            "time": "2014-09-09 22:02:17"
+        },
+        {
+            "name": "illuminate/contracts",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/contracts.git",
+                "reference": "6d751a0cfcd75d4bd79a07ae62e97af3bd428660"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/contracts/zipball/6d751a0cfcd75d4bd79a07ae62e97af3bd428660",
+                "reference": "6d751a0cfcd75d4bd79a07ae62e97af3bd428660",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Illuminate\\Contracts\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                }
+            ],
+            "time": "2014-09-09 22:11:15"
         },
         {
             "name": "illuminate/database",
             "version": "dev-master",
-            "target-dir": "Illuminate/Database",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "626069648ee589e3c967211a4a0c116e9f8fc548"
+                "reference": "d42ba92ecafafd93c7e8721b3df3a3798da8fcbb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/626069648ee589e3c967211a4a0c116e9f8fc548",
-                "reference": "626069648ee589e3c967211a4a0c116e9f8fc548",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/d42ba92ecafafd93c7e8721b3df3a3798da8fcbb",
+                "reference": "d42ba92ecafafd93c7e8721b3df3a3798da8fcbb",
                 "shasum": ""
             },
             "require": {
                 "illuminate/container": "4.3.*",
-                "illuminate/events": "4.3.*",
+                "illuminate/contracts": "4.3.*",
                 "illuminate/support": "4.3.*",
                 "nesbot/carbon": "~1.0",
                 "php": ">=5.4.0"
             },
             "require-dev": {
-                "illuminate/cache": "4.3.*",
                 "illuminate/console": "4.3.*",
                 "illuminate/filesystem": "4.3.*",
                 "illuminate/pagination": "4.3.*",
-                "illuminate/support": "4.3.*",
-                "mockery/mockery": "0.9.*",
-                "phpunit/phpunit": "4.0.*"
+                "illuminate/support": "4.3.*"
             },
             "type": "library",
             "extra": {
@@ -189,8 +221,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Illuminate\\Database": ""
+                "psr-4": {
+                    "Illuminate\\Database\\": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -200,9 +232,7 @@
             "authors": [
                 {
                     "name": "Taylor Otwell",
-                    "email": "taylorotwell@gmail.com",
-                    "homepage": "https://github.com/taylorotwell",
-                    "role": "Creator of Laravel"
+                    "email": "taylorotwell@gmail.com"
                 }
             ],
             "keywords": [
@@ -211,80 +241,29 @@
                 "orm",
                 "sql"
             ],
-            "time": "2014-05-16 17:54:20"
-        },
-        {
-            "name": "illuminate/events",
-            "version": "dev-master",
-            "target-dir": "Illuminate/Events",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/illuminate/events.git",
-                "reference": "94959ce38059579c148e49763748345c2ca2a2fc"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/events/zipball/94959ce38059579c148e49763748345c2ca2a2fc",
-                "reference": "94959ce38059579c148e49763748345c2ca2a2fc",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/container": "4.3.*",
-                "illuminate/support": "4.3.*",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "0.9.*",
-                "phpunit/phpunit": "4.0.*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "4.3-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Illuminate\\Events": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylorotwell@gmail.com",
-                    "homepage": "https://github.com/taylorotwell",
-                    "role": "Creator of Laravel"
-                }
-            ],
-            "time": "2014-05-11 17:59:45"
+            "time": "2014-09-09 14:57:19"
         },
         {
             "name": "illuminate/support",
             "version": "dev-master",
-            "target-dir": "Illuminate/Support",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "4f2ec54c3e55fff43ae8c87fd8015c806e21a073"
+                "reference": "34d92c9e65b1280f515ea48d1d486910cc2f0e09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/4f2ec54c3e55fff43ae8c87fd8015c806e21a073",
-                "reference": "4f2ec54c3e55fff43ae8c87fd8015c806e21a073",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/34d92c9e65b1280f515ea48d1d486910cc2f0e09",
+                "reference": "34d92c9e65b1280f515ea48d1d486910cc2f0e09",
                 "shasum": ""
             },
             "require": {
+                "illuminate/contracts": "4.3.*",
                 "php": ">=5.4.0"
             },
             "require-dev": {
                 "jeremeamia/superclosure": "~1.0",
-                "mockery/mockery": "0.9.*",
-                "patchwork/utf8": "1.1.*",
-                "phpunit/phpunit": "4.0.*"
+                "patchwork/utf8": "~1.1"
             },
             "type": "library",
             "extra": {
@@ -293,11 +272,11 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Illuminate\\Support": ""
+                "psr-4": {
+                    "Illuminate\\Support\\": ""
                 },
                 "files": [
-                    "Illuminate/Support/helpers.php"
+                    "helpers.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -307,12 +286,10 @@
             "authors": [
                 {
                     "name": "Taylor Otwell",
-                    "email": "taylorotwell@gmail.com",
-                    "homepage": "https://github.com/taylorotwell",
-                    "role": "Creator of Laravel"
+                    "email": "taylorotwell@gmail.com"
                 }
             ],
-            "time": "2014-05-09 18:22:55"
+            "time": "2014-09-09 13:10:06"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -341,7 +318,7 @@
             "authors": [
                 {
                     "name": "Anthony Ferrara",
-                    "email": "ircmaxell@php.net",
+                    "email": "ircmaxell@ircmaxell.com",
                     "homepage": "http://blog.ircmaxell.com"
                 }
             ],
@@ -399,23 +376,23 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.9.0",
+            "version": "1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "b94de7192b01d0e80794eae984dcc773220ab0dc"
+                "reference": "cde7a00d1410a17fb6d61b993cb017a78be1137c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/b94de7192b01d0e80794eae984dcc773220ab0dc",
-                "reference": "b94de7192b01d0e80794eae984dcc773220ab0dc",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/cde7a00d1410a17fb6d61b993cb017a78be1137c",
+                "reference": "cde7a00d1410a17fb6d61b993cb017a78be1137c",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "3.7.*"
+                "phpunit/phpunit": "~4.0"
             },
             "type": "library",
             "autoload": {
@@ -441,7 +418,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2014-05-13 02:29:30"
+            "time": "2014-09-10 03:26:33"
         },
         {
             "name": "slim/slim",
@@ -526,7 +503,7 @@
                 {
                     "name": "Andrew Smith",
                     "email": "a.smith@silentworks.co.uk",
-                    "homepage": "http://thoughts.silentworks.co.uk/"
+                    "homepage": "http://www.silentworks.co.uk/"
                 },
                 {
                     "name": "Josh Lockhart",
@@ -544,83 +521,32 @@
             "time": "2014-04-03 16:31:10"
         },
         {
-            "name": "symfony/translation",
-            "version": "2.4.x-dev",
-            "target-dir": "Symfony/Component/Translation",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/Translation.git",
-                "reference": "b19285ff60fe8d145d46f4c7e2175f9c135c1f6c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Translation/zipball/b19285ff60fe8d145d46f4c7e2175f9c135c1f6c",
-                "reference": "b19285ff60fe8d145d46f4c7e2175f9c135c1f6c",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "require-dev": {
-                "symfony/config": "~2.0",
-                "symfony/yaml": "~2.2"
-            },
-            "suggest": {
-                "symfony/config": "",
-                "symfony/yaml": ""
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.4-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Symfony\\Component\\Translation\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com",
-                    "homepage": "http://fabien.potencier.org",
-                    "role": "Lead Developer"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony Translation Component",
-            "homepage": "http://symfony.com",
-            "time": "2014-05-12 09:27:48"
-        },
-        {
             "name": "twig/extensions",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig-extensions.git",
-                "reference": "502303198afc1ec0bcc061c6f3a0926f7eb685e3"
+                "reference": "b092fb785ef82eb99132deadaf8ca1823a4d75dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig-extensions/zipball/502303198afc1ec0bcc061c6f3a0926f7eb685e3",
-                "reference": "502303198afc1ec0bcc061c6f3a0926f7eb685e3",
+                "url": "https://api.github.com/repos/fabpot/Twig-extensions/zipball/b092fb785ef82eb99132deadaf8ca1823a4d75dd",
+                "reference": "b092fb785ef82eb99132deadaf8ca1823a4d75dd",
                 "shasum": ""
             },
             "require": {
                 "twig/twig": "~1.12"
             },
+            "require-dev": {
+                "symfony/translation": "~2.3"
+            },
+            "suggest": {
+                "symfony/translation": "Allow the time_diff output to be translated"
+            },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.1.x-dev"
                 }
             },
             "autoload": {
@@ -635,19 +561,16 @@
             "authors": [
                 {
                     "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com",
-                    "homepage": "http://fabien.potencier.org",
-                    "role": "Lead Developer"
+                    "email": "fabien@symfony.com"
                 }
             ],
             "description": "Common additional features for Twig that do not directly belong in core",
             "homepage": "https://github.com/fabpot/Twig-extensions",
             "keywords": [
-                "debug",
                 "i18n",
                 "text"
             ],
-            "time": "2014-03-01 02:53:07"
+            "time": "2014-08-08 06:16:10"
         },
         {
             "name": "twig/twig",
@@ -655,12 +578,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig.git",
-                "reference": "55253c3f37b1b47ad797eb95f27b0a33e3a76d2f"
+                "reference": "084ca201a737de82323f7613665e7229789aa434"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig/zipball/55253c3f37b1b47ad797eb95f27b0a33e3a76d2f",
-                "reference": "55253c3f37b1b47ad797eb95f27b0a33e3a76d2f",
+                "url": "https://api.github.com/repos/fabpot/Twig/zipball/084ca201a737de82323f7613665e7229789aa434",
+                "reference": "084ca201a737de82323f7613665e7229789aa434",
                 "shasum": ""
             },
             "require": {
@@ -669,7 +592,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.15-dev"
+                    "dev-master": "1.16-dev"
                 }
             },
             "autoload": {
@@ -704,23 +627,18 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2014-05-15 19:43:48"
+            "time": "2014-09-02 14:08:17"
         }
     ],
-    "packages-dev": [
-
-    ],
-    "aliases": [
-
-    ],
+    "packages-dev": [],
+    "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
         "itsgoingd/slim-facades": 20
     },
+    "prefer-stable": false,
     "platform": {
         "php": ">= 5.3.0"
     },
-    "platform-dev": [
-
-    ]
+    "platform-dev": []
 }
