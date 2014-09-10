@@ -1,6 +1,6 @@
 <?php
 
-namespace Admin;
+namespace User;
 
 use \App;
 use \View;
@@ -24,7 +24,7 @@ class UserController extends BaseController
      */
     public function signup()
     {
-        View::display('user/index.twig', $this->data);
+        View::display('user/signup.twig', $this->data);
     }
 
     /**
@@ -32,19 +32,27 @@ class UserController extends BaseController
      */
     public function doSignup()
     {
+        $email = Input::post('email');
+        $password = Input::post('password');
+        $firstName = Input::post('firstName');
+        $lastName = Input::post('lastName');
+
         try{
             Sentry::createUser(array(
-                'email'       => 'admin@admin.com',
-                'password'    => 'password',
-                'first_name'  => 'Website',
-                'last_name'   => 'Administrator',
+                'email'       => $email,
+                'password'    => $password,
+                'first_name'  => $firstName,
+                'last_name'   => $lastName,
                 'activated'   => 1,
                 'permissions' => array(
-                    'admin'     => 1
+                    'admin'     => 0
                 )
             ));
         }catch(\Exception $e){
             App::flash('message', $e->getMessage());
+            App::flash('email', $email);
+
+            Response::redirect($this->siteUrl('signup'));
         }
 
     }

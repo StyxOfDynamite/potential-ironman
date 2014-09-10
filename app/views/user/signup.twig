@@ -12,10 +12,10 @@
                 {% endif %}
                 <div class="login-panel panel panel-default" style="margin-top:40px">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Please Sign In</h3>
+                        <h3 class="panel-title">Please Sign Up</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" method="post" action="{{baseUrl()}}/login">
+                        <form role="form" method="post" action="{{baseUrl()}}/signup">
                             <input type="hidden" name="redirect" value="{{ flash.redirect ? : redirect}}">
                             <fieldset>
                                 <div class="form-group">
@@ -24,15 +24,19 @@
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Password" name="password" type="password" value="">
                                 </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input name="remember" type="checkbox" value="Remember Me" {% if flash.remember %}checked{% endif %}>Remember Me
-                                    </label>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Verify Password" name="password2" type="password" value="">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="First Name" name="firstName" type="text">
+                                </div>
+                                 <div class="form-group">
+                                    <input class="form-control" placeholder="Last Name" name="lastName" type="text">
                                 </div>
 
                                 <div class="form-group">
                                     <div class="col-xs-6 text-center">
-                                        <button type="submit" class="btn btn-md btn-success btn-block">Login</button>
+                                        <button type="submit" class="btn btn-md btn-success btn-block">Sign Up</button>
                                     </div>
                                     <div class="col-xs-6 text-center">
                                         <a href="{{siteUrl('/')}}" class="btn btn-md btn-danger btn-block">Cancel</a>

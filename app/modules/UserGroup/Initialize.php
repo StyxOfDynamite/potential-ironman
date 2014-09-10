@@ -45,6 +45,13 @@ class Initialize extends \SlimStarter\Module\Initializer{
         $adminMenu->addItem('usergroup', $userGroup);
     }
 
+    public function registerUserMenu()
+    {
+        $userMenu = Menu::get('user_sidebar');
+        
+
+    }
+
     public function registerAdminRoute(){
         Route::resource('/user', 'UserGroup\Controllers\UserController');
         Route::resource('/group', 'UserGroup\Controllers\GroupController');

@@ -42,8 +42,8 @@ Route::post('/login', 'Admin\AdminController:doLogin');
 Route::get('/doc(/:page+)', 'DocController:index');
 
 /** Route to signup page */
-Route::get('signup', 'User\UserController:signup')->name('signup');
-Route::post('signup', 'User\UserController:doSignup');
+Route::get('/signup', 'User\UserController:signup')->name('signup');
+Route::post('/signup', 'User\UserController:doSignup');
 
 
 foreach (Module::getModules() as $module) {
