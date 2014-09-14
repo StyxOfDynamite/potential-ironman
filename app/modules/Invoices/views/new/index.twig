@@ -1,47 +1,25 @@
-{% extends 'user/home.twig' %}
+{% extends 'master.twig' %}
 
 {% block body %}
- {% if flash.message %}
-    <div class="alert alert-danger alert-dismissable" style="margin-top: 25px">
-        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-        {{ flash.message }}
+<form role="form" class="form-horizontal" id="user-form-data" method="post" action="{{siteUrl('invoices/new')}}">
+    <input type="hidden" id="user_id" name="id">
+
+    <div class="form-group">
+        <label for="client_email" class="col-lg-4 control-label">Client Email</label>
+        <div class="col-lg-8">
+            <input type="text" class="input-sm form-control validate[required]" name="email" id="client_email" placeholder="Client Email">
+        </div>
     </div>
-{% endif %}
-<div>
-    <form role="form" class="form-horizontal" id="user-form-data" method="post" action="{{siteUrl('invoices/new')}}">
-        <input type="hidden" id="user_id" name="id">
 
-        <div class="form-group">
-            <label for="email" class="col-lg-4 control-label">Client Email</label>
-            <div class="col-lg-8">
-                <input type="text" class="input-sm form-control validate[required]" name="email" id="email" placeholder="Client Email">
-            </div>
+    <div class="form-group">
+        <label for="due_date" class="col-lg-4 control-label">Due Date</label>
+        <div class="col-lg-8">
+            <input type="text" class="input-sm form-control validate[required]" name="due_date" id="due_date" placeholder="Due Date">
         </div>
+    </div>
 
-        <div class="form-group">
-            <label for="due_date" class="col-lg-4 control-label">Due Date</label>
-            <div class="col-lg-8">
-                <input type="text" class="input-sm form-control validate[required]" name="due_date" id="due_date" placeholder="Due Date">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="reminders" class="col-lg-4 control-label">Reminders</label>
-            <div class="col-lg-8">
-                <input type="checkbox" class="input-sm form-control validate[required]" name="reminders" id="reminders">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="paid" class="col-lg-4 control-label">Paid</label>
-            <div class="col-lg-8">
-                <input type="checkbox" class="input-sm form-control validate[required]" name="paid" id="paid">
-            </div>
-        </div>
-
-        <div class="form-group">
-             <button type="submit" class="btn btn-md btn-success btn-block">Create</button>
-        </div>
-    </form>
-</div>
+    <div class="form-group">
+         <button type="submit" class="btn btn-md btn-success btn-block">Create</button>
+    </div>
+</form>
 {% endblock %}
