@@ -6,7 +6,8 @@ use \App;
 use \View;
 use \Menu;
 use \Invoice;
-use \UserInvoice;
+use \User;
+use \UsersInvoice;
 use \Input;
 use \Sentry;
 use \Request;
@@ -21,7 +22,7 @@ class InvoiceController extends BaseController
     public function __construct()
     {
         parent::__construct();
-        Menu::get('admin_sidebar')->setActiveMenu('group');
+        Menu::get('user_sidebar')->setActiveMenu('invoices');
     }
 
     public function index($page = 1)
@@ -39,7 +40,7 @@ class InvoiceController extends BaseController
         $this->publish('baseUrl', $this->data['baseUrl']);
 
         /** render the template */
-        View::display('@invoices/list/list.twig', $this->data);
+        App::render('@invoices/list/list.twig', $this->data);
     }
 
     public function show()
@@ -54,38 +55,39 @@ class InvoiceController extends BaseController
         $success = false;
 
         if(Input::post()) {
+            $email = Input::post('email');
+            $due_date = Input::post('due_date');
+            $reminders = Input::post('reminders') ? true : false;
+            $paid = Input::post('paid') ? true : false;
+            $redirect = Input::post('redirect');
+            $redirect = ($redirect) ? $redirect : 'home';
+
             try{
-            $input = Input::post();
+
+                $user = Sentry::getUser();
+
+                $invoice = new Invoice;
+                $invoice->user_id = $user->id;
+                $invoice->clientEmail = $email;
+                $invoice->dueDate = $due_date;
+                $invoice->reminders = $reminders;
+                $invoice->paid = $paid;
+                $invoice->save();
 
 
-            $invoice = Sentry::createInvoice(array(
-                'clientEmail'       => $input['email'],
-                'dueDate'    => $input['password'],
-                'reminders'  => $input['first_name'],
-                'paid' => false
-            ));
+                View::display('@invoices/pending/index.twig', $this->data);
 
-            $success = true;
-            $message = 'User created successfully';
-            }catch (Exception $e){
-                $message = $e->getMessage();
-            }
+                
 
-            if(Request::isAjax()){
-                Response::headers()->set('Content-Type', 'application/json');
-                Response::setBody(json_encode(
-                    array(
-                        'success'   => $success,
-                        'data'      => ($user) ? $user->toArray() : $user,
-                        'message'   => $message,
-                        'code'      => $success ? 200 : 500
-                    )
-                ));
-            }else{
-                Response::redirect($this->siteUrl('home'));
+            }catch(\Exception $e){
+                App::flash('message', $e->getMessage());
+                App::flash('email', $email);
+
+                Response::redirect($this->siteUrl('invoices/new'));
             }
         }else{
-            View::display('@invoices/new/index.twig');
+            $this->loadJs('app/new-invoice.js', ['position' => 'after:jquery-1.10.2.js']);
+            App::render('@invoices/new/index.twig', $this->data);
         }
     }
 
@@ -106,18 +108,22 @@ class InvoiceController extends BaseController
 
     public function paid()
     {
+
+    }
+
+    public function pending()
+    {
         $user = Sentry::getUser();
-        $this->data['title'] = 'Paid Invoices';
-        $this->data['invoices'] = UserInvoice::where('user_id', '=', $user->id)->get()->toArray();
+        $invoices = User::find($user->id)->invoices;
 
-        /** load the invoices.js app */
-        $this->loadJs('app/invoices.js');
 
-        /** publish necessary js variable */
-        $this->publish('baseUrl', $this->data['baseUrl']);
+
+        $this->data['title'] = 'Invoices';
+        $this->data['invoices'] = $invoices;
+
 
         /** render the template */
-        View::display('@invoices/paid/index.twig', $this->data);
+        App::render('@invoices/pending/index.twig', $this->data);
     }
 
 }

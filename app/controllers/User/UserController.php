@@ -56,7 +56,7 @@ class UserController extends BaseController
         $remember = Input::post('remember', false);
         $email    = Input::post('email');
         $redirect = Input::post('redirect');
-        $redirect = ($redirect) ? $redirect : 'admin';
+        $redirect = ($redirect) ? $redirect : 'home';
 
         try{
             $credential = array(
