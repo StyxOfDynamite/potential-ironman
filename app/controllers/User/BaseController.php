@@ -24,7 +24,7 @@ class BaseController extends \BaseController
         $userMenu->setActiveMenu('dashboard');
 
         foreach (Module::getModules() as $module) {
-            $module->registerUserMenu();
+            $module->registerAdminMenu();
         }
 
     }
