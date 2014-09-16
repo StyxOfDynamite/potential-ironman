@@ -16,7 +16,7 @@ use \Exception;
 use \Admin\BaseController;
 use \Cartalyst\Sentry\Users\UserNotFoundException;
 
-class InvoiceController extends BaseController
+class InvoiceController extends \User\BaseController
 {
 
     public function __construct()
@@ -75,7 +75,7 @@ class InvoiceController extends BaseController
                 $invoice->save();
 
 
-                View::display('@invoices/pending/index.twig', $this->data);
+                Response::redirect($this->siteUrl('invoices/pending'));
 
                 
 

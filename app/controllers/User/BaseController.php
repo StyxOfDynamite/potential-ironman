@@ -17,7 +17,7 @@ class BaseController extends \BaseController
         $dashboard = $userMenu->createItem('dashboard', array(
             'label' => 'Dashboard',
             'icon'  => 'dashboard',
-            'url'   => 'admin'
+            'url'   => 'user'
         ));
 
         $userMenu->addItem('dashboard', $dashboard);

@@ -16,7 +16,7 @@ class Initialize extends \SlimStarter\Module\Initializer{
         return 'invoices';
     }
 
-    public function registerUserMenu()
+    public function registerAdminMenu()
     {
         $userMenu = Menu::get('user_sidebar');
 
@@ -29,19 +29,19 @@ class Initialize extends \SlimStarter\Module\Initializer{
 
         $newInvoice = $userMenu->createItem('new-invoice', array(
             'label' => 'New Invoice',
-            'icon'  => 'user',
+            'icon'  => 'envelope-o',
             'url'   => '/invoices/new'
         ));
 
         $pendingInvoices = $userMenu->createItem('pending-invoices', array(
             'label' => 'Pending Invoices',
-            'icon'  => 'user',
+            'icon'  => 'exchange',
             'url'   => '/invoices/pending'
         ));
         
         $paidInvoices = $userMenu->createItem('paid-invoices', array(
             'label' => 'Paid Invoices',
-            'icon'  => 'user',
+            'icon'  => 'money',
             'url'   => '/invoices/paid'
         ));
 

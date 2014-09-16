@@ -44,7 +44,7 @@ class UserController extends BaseController
             Response::redirect($this->siteUrl('home'));
         }else{
             $this->data['redirect'] = (Input::get('redirect')) ? base64_decode(Input::get('redirect')) : '';
-            View::display('admin/login.twig', $this->data);
+            View::display('user/login.twig', $this->data);
         }
     }
 

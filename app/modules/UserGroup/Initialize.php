@@ -16,7 +16,7 @@ class Initialize extends \SlimStarter\Module\Initializer{
         return 'usergroup';
     }
 
-    public function registerAdminMenu(){
+    /**public function registerAdminMenu(){
 
         $adminMenu = Menu::get('admin_sidebar');
 
@@ -43,9 +43,9 @@ class Initialize extends \SlimStarter\Module\Initializer{
         $userGroup->addChildren($groupMenu);
 
         $adminMenu->addItem('usergroup', $userGroup);
-    }
+    }*/
 
-    public function registerUserMenu()
+    public function registerAdminMenu()
     {
         $userMenu = Menu::get('user_sidebar');
 
