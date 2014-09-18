@@ -16,35 +16,6 @@ class Initialize extends \SlimStarter\Module\Initializer{
         return 'usergroup';
     }
 
-    /**public function registerAdminMenu(){
-
-        $adminMenu = Menu::get('admin_sidebar');
-
-        $userGroup = $adminMenu->createItem('usergroup', array(
-            'label' => 'User and Group',
-            'icon'  => 'group',
-            'url'   => '#'
-        ));
-        $userGroup->setAttribute('class', 'nav nav-second-level');
-
-        $userMenu = $adminMenu->createItem('user', array(
-            'label' => 'User',
-            'icon'  => 'user',
-            'url'   => 'admin/user'
-        ));
-
-        $groupMenu = $adminMenu->createItem('group', array(
-            'label' => 'Group',
-            'icon'  => 'group',
-            'url'   => 'admin/group'
-        ));
-
-        $userGroup->addChildren($userMenu);
-        $userGroup->addChildren($groupMenu);
-
-        $adminMenu->addItem('usergroup', $userGroup);
-    }*/
-
     public function registerAdminMenu()
     {
         $userMenu = Menu::get('user_sidebar');
@@ -58,19 +29,19 @@ class Initialize extends \SlimStarter\Module\Initializer{
 
         $newInvoice = $userMenu->createItem('new-invoice', array(
             'label' => 'New Invoice',
-            'icon'  => 'user',
+            'icon'  => 'envelope-o',
             'url'   => '/invoices/new'
         ));
 
         $pendingInvoices = $userMenu->createItem('pending-invoices', array(
             'label' => 'Pending Invoices',
-            'icon'  => 'user',
+            'icon'  => 'exchange',
             'url'   => '/invoices/pending'
         ));
         
         $paidInvoices = $userMenu->createItem('paid-invoices', array(
             'label' => 'Paid Invoices',
-            'icon'  => 'user',
+            'icon'  => 'money',
             'url'   => '/invoices/paid'
         ));
 

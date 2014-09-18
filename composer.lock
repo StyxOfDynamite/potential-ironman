@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c0cf3e6221e66ab0574e6f657f9c5e66",
+    "hash": "8dcb31c257cea54714e9c692bcdd91b1",
     "packages": [
         {
             "name": "cartalyst/sentry",
@@ -108,31 +108,31 @@
         },
         {
             "name": "illuminate/container",
-            "version": "dev-master",
+            "version": "4.2.x-dev",
+            "target-dir": "Illuminate/Container",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
-                "reference": "2d2567e431dcabeba2d386fb3f68d91f92e0d257"
+                "reference": "5c43bd3bd5eea2ed2061cd0dd57d72404aceb978"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/container/zipball/2d2567e431dcabeba2d386fb3f68d91f92e0d257",
-                "reference": "2d2567e431dcabeba2d386fb3f68d91f92e0d257",
+                "url": "https://api.github.com/repos/illuminate/container/zipball/5c43bd3bd5eea2ed2061cd0dd57d72404aceb978",
+                "reference": "5c43bd3bd5eea2ed2061cd0dd57d72404aceb978",
                 "shasum": ""
             },
             "require": {
-                "illuminate/contracts": "4.3.*",
                 "php": ">=5.4.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.3-dev"
+                    "dev-master": "4.2-dev"
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Illuminate\\Container\\": ""
+                "psr-0": {
+                    "Illuminate\\Container": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -145,84 +145,45 @@
                     "email": "taylorotwell@gmail.com"
                 }
             ],
-            "time": "2014-09-09 22:02:17"
-        },
-        {
-            "name": "illuminate/contracts",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/illuminate/contracts.git",
-                "reference": "6d751a0cfcd75d4bd79a07ae62e97af3bd428660"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/contracts/zipball/6d751a0cfcd75d4bd79a07ae62e97af3bd428660",
-                "reference": "6d751a0cfcd75d4bd79a07ae62e97af3bd428660",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "4.3-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Contracts\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylorotwell@gmail.com"
-                }
-            ],
-            "time": "2014-09-09 22:11:15"
+            "time": "2014-09-11 19:02:16"
         },
         {
             "name": "illuminate/database",
-            "version": "dev-master",
+            "version": "4.2.x-dev",
+            "target-dir": "Illuminate/Database",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "d42ba92ecafafd93c7e8721b3df3a3798da8fcbb"
+                "reference": "b66a7173ca6a81de3b2ccbd84372bee8624215f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/d42ba92ecafafd93c7e8721b3df3a3798da8fcbb",
-                "reference": "d42ba92ecafafd93c7e8721b3df3a3798da8fcbb",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/b66a7173ca6a81de3b2ccbd84372bee8624215f1",
+                "reference": "b66a7173ca6a81de3b2ccbd84372bee8624215f1",
                 "shasum": ""
             },
             "require": {
-                "illuminate/container": "4.3.*",
-                "illuminate/contracts": "4.3.*",
-                "illuminate/support": "4.3.*",
+                "illuminate/container": "4.2.*",
+                "illuminate/events": "4.2.*",
+                "illuminate/support": "4.2.*",
                 "nesbot/carbon": "~1.0",
                 "php": ">=5.4.0"
             },
             "require-dev": {
-                "illuminate/console": "4.3.*",
-                "illuminate/filesystem": "4.3.*",
-                "illuminate/pagination": "4.3.*",
-                "illuminate/support": "4.3.*"
+                "illuminate/cache": "4.2.*",
+                "illuminate/console": "4.2.*",
+                "illuminate/filesystem": "4.2.*",
+                "illuminate/pagination": "4.2.*"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.3-dev"
+                    "dev-master": "4.2-dev"
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Illuminate\\Database\\": ""
+                "psr-0": {
+                    "Illuminate\\Database": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -241,42 +202,85 @@
                 "orm",
                 "sql"
             ],
-            "time": "2014-09-09 14:57:19"
+            "time": "2014-09-11 14:10:29"
         },
         {
-            "name": "illuminate/support",
-            "version": "dev-master",
+            "name": "illuminate/events",
+            "version": "4.2.x-dev",
+            "target-dir": "Illuminate/Events",
             "source": {
                 "type": "git",
-                "url": "https://github.com/illuminate/support.git",
-                "reference": "34d92c9e65b1280f515ea48d1d486910cc2f0e09"
+                "url": "https://github.com/illuminate/events.git",
+                "reference": "19f93bcd692a52b39f1bd125f6f112eda0c1b8b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/34d92c9e65b1280f515ea48d1d486910cc2f0e09",
-                "reference": "34d92c9e65b1280f515ea48d1d486910cc2f0e09",
+                "url": "https://api.github.com/repos/illuminate/events/zipball/19f93bcd692a52b39f1bd125f6f112eda0c1b8b0",
+                "reference": "19f93bcd692a52b39f1bd125f6f112eda0c1b8b0",
                 "shasum": ""
             },
             "require": {
-                "illuminate/contracts": "4.3.*",
+                "illuminate/container": "4.2.*",
+                "illuminate/support": "4.2.*",
                 "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "jeremeamia/superclosure": "~1.0",
-                "patchwork/utf8": "~1.1"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.3-dev"
+                    "dev-master": "4.2-dev"
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Illuminate\\Support\\": ""
+                "psr-0": {
+                    "Illuminate\\Events": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                }
+            ],
+            "time": "2014-08-17 14:08:00"
+        },
+        {
+            "name": "illuminate/support",
+            "version": "4.2.x-dev",
+            "target-dir": "Illuminate/Support",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/support.git",
+                "reference": "735a35c50bb4b3906bb2e56474235d34ae2b94fe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/735a35c50bb4b3906bb2e56474235d34ae2b94fe",
+                "reference": "735a35c50bb4b3906bb2e56474235d34ae2b94fe",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "jeremeamia/superclosure": "~1.0",
+                "patchwork/utf8": "1.1.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Illuminate\\Support": ""
                 },
                 "files": [
-                    "helpers.php"
+                    "Illuminate/Support/helpers.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -289,7 +293,7 @@
                     "email": "taylorotwell@gmail.com"
                 }
             ],
-            "time": "2014-09-09 13:10:06"
+            "time": "2014-09-15 04:03:56"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -419,6 +423,59 @@
                 "time"
             ],
             "time": "2014-09-10 03:26:33"
+        },
+        {
+            "name": "phpmailer/phpmailer",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPMailer/PHPMailer.git",
+                "reference": "e43b2649175d076e01a695c3897c547d89ca05ed"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/e43b2649175d076e01a695c3897c547d89ca05ed",
+                "reference": "e43b2649175d076e01a695c3897c547d89ca05ed",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.0.0"
+            },
+            "require-dev": {
+                "phpdocumentor/phpdocumentor": "*",
+                "phpunit/phpunit": "4.1.*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "class.phpmailer.php",
+                    "class.pop3.php",
+                    "class.smtp.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1"
+            ],
+            "authors": [
+                {
+                    "name": "Jim Jagielski",
+                    "email": "jimjag@gmail.com"
+                },
+                {
+                    "name": "Marcus Bointon",
+                    "email": "phpmailer@synchromedia.co.uk"
+                },
+                {
+                    "name": "Andy Prevost",
+                    "email": "codeworxtech@users.sourceforge.net"
+                },
+                {
+                    "name": "Brent R. Matzelle"
+                }
+            ],
+            "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
+            "time": "2014-09-11 11:06:54"
         },
         {
             "name": "slim/slim",
@@ -634,7 +691,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "itsgoingd/slim-facades": 20
+        "itsgoingd/slim-facades": 20,
+        "phpmailer/phpmailer": 20
     },
     "prefer-stable": false,
     "platform": {

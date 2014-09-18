@@ -9,6 +9,8 @@ define('APP_PATH'   , __DIR__.'/../../app/');
 define('MODULE_PATH', __DIR__.'/../../app/modules/');
 define('PUBLIC_PATH', __DIR__.'/../../public/');
 
+require VENDOR_PATH . '/phpmailer/phpmailer/PHPMailerAutoload.php';
+
 require VENDOR_PATH.'autoload.php';
 
 /**

@@ -9,33 +9,81 @@
 {% endif %}
 <div>
     <form role="form" class="form-horizontal" id="user-form-data" method="post" action="{{siteUrl('invoices/new')}}">
-        <input type="hidden" id="user_id" name="id">
 
+        <!-- Client Details -->
         <div class="form-group">
-            <label for="email" class="col-lg-4 control-label">Client Email</label>
-            <div class="col-lg-8">
+            <label for="email" class="col-lg-2 control-label">Client Email</label>
+            <div class="col-lg-2">
                 <input type="text" class="input-sm form-control validate[required]" name="email" id="email" placeholder="Client Email">
             </div>
         </div>
+        <div class="form-group">
+            <label for="client_name" class="col-lg-2 control-label">Client Name</label>
+            <div class="col-lg-2">
+                <input type="text" class="input-sm form-control validate[required]" name="client_name" id="client_name" placeholder="Client Name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="clientAddress1" class="col-lg-2 control-label">Address Line 1</label>
+            <div class="col-lg-2">
+                <input type="text" class="input-sm form-control validate[required]" name="clientAddress1" id="clientAddress1" placeholder="Address Line 1">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="clientAddress2" class="col-lg-2 control-label">Address Line 2</label>
+            <div class="col-lg-2">
+                <input type="text" class="input-sm form-control validate[required]" name="clientAddress2" id="clientAddress2" placeholder="Address Line 2">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="clientAddress3" class="col-lg-2 control-label">Address Line 3</label>
+            <div class="col-lg-2">
+                <input type="text" class="input-sm form-control validate[required]" name="clientAddress3" id="clientAddress3" placeholder="Address Line 3">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="clientAddress4" class="col-lg-2 control-label">Address Line 4</label>
+            <div class="col-lg-2">
+                <input type="text" class="input-sm form-control validate[required]" name="clientAddress2" id="clientAddress4" placeholder="Address Line 4">
+            </div>
+        </div>
+
+        <!-- Invoice Details -->
 
         <div class="form-group">
-            <label for="due_date" class="col-lg-4 control-label">Due Date</label>
-            <div class="col-lg-8">
+            <label for="due_date" class="col-lg-2 control-label">Due Date</label>
+            <div class="col-lg-2">
                 <input type="text" class="input-sm form-control validate[required]" name="due_date" id="due_date" placeholder="Due Date">
             </div>
         </div>
-
         <div class="form-group">
-            <label for="reminders" class="col-lg-4 control-label">Reminders</label>
-            <div class="col-lg-8">
-                <input type="checkbox" class="input-sm form-control validate[required]" name="reminders" id="reminders">
+            <label for="Message" class="col-lg-2 control-label">Message</label>
+            <div class="col-lg-6">
+                <textarea rows="5" class="input-sm form-control validate[required]" name="message" id="message" placeholder="Message to payyee"></textarea>
             </div>
         </div>
-
         <div class="form-group">
-            <label for="paid" class="col-lg-4 control-label">Paid</label>
-            <div class="col-lg-8">
-                <input type="checkbox" class="input-sm form-control validate[required]" name="paid" id="paid">
+            <label for="item_name" class="col-lg-2 control-label">Item:</label>
+            <div class="col-lg-2">
+                <input type="text" class="input-sm form-control validate[required]" name="item_name[]" id="item_name[]" placeholder="Name">
+            </div>
+            <div class="col-lg-2">
+                <input type="text" class="input-sm form-control validate[required]" name="item_qty[]" id="item_qty[]" placeholder="Quantity">
+            </div>
+            <div class="col-lg-2">
+                <input type="text" class="input-sm form-control validate[required]" name="item_price[]" id="item_price[]" placeholder="Price">
+            </div>
+            <div class="col-lg-2">
+                <input type="text" class="input-sm form-control validate[required]" name="item_total[]" id="item_total[]" placeholder="Total">
+            </div>
+            <div class="col-lg-1">
+                <a id="add-item" class="btn btn-xs btn-success" href="#">Add Item</a>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="total" class="col-lg-2 control-label">Total</label>
+            <div class="col-lg-2">
+                <input type="text" class="input-sm form-control validate[required]" name="total" id="due_date" placeholder="total">
             </div>
         </div>
 
