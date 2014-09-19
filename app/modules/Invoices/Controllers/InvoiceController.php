@@ -72,12 +72,17 @@ class InvoiceController extends \User\BaseController
             $invoice_total = Input::post('total');
             $items = array();
 
-            for ($i=0; $i < count($item_name); $i++) { 
-                $items[]['name'] = $item_name[$i];
-                $items[]['quantity'] = $item_qty[$i];
-                $items[]['price'] = $item_price[$i];
-                $items[]['total'] = $item_total[$i]; 
+            for ($i=0; $i < count($item_name); $i++) {
+                $item = array( 
+                    'name' => $item_name[$i],
+                    'quantity' => $item_qty[$i],
+                    'price' => $item_price[$i],
+                    'total' => $item_total[$i]
+                );
+                array_push($items, array('item' => $item)); 
             }
+
+
 
             try{
 
@@ -155,7 +160,7 @@ class InvoiceController extends \User\BaseController
                         'id' => $invoice->id,
                         'clientname' => $client_name,
                         'duedate' => $due_date,
-                        'item' => $items,
+                        'items' => $items,
                         'total' => $invoice_total
                     ),
                     'text' => $invoice_message
@@ -163,11 +168,11 @@ class InvoiceController extends \User\BaseController
 
                 $invoice_details = array("doc" => $invoice_details);
                 $result = generatePdf($template, $invoice_details);
-                
+                /* fetch pdf */
                 $contents = file_get_contents($result['pdf']);
-
+                
                 $random = rand();
-
+                /* store pdf */
                 file_put_contents('invoice-' . $random . '.pdf', $contents);
 
                 $email = new \PHPMailer;
@@ -182,6 +187,7 @@ class InvoiceController extends \User\BaseController
                 $email->AddAttachment($file_to_attach, 'Invoice.pdf' );
                 $email->Send();
 
+                /* remove pdf */
                 unlink('invoice-' . $random . '.pdf');
 
                 App::flash('message', 'Invoice sent!');
