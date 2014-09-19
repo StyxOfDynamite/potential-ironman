@@ -166,20 +166,23 @@ class InvoiceController extends \User\BaseController
                 
                 $contents = file_get_contents($result['pdf']);
 
-                file_put_contents('invoice.pdf', $contents);
+                $random = rand();
+
+                file_put_contents('invoice-' . $random . '.pdf', $contents);
 
                 $email = new \PHPMailer;
-                $email->From      = $user->email;
+                $email->From = $user->email;
                 $email->FromName  = $user->first_name . ' ' . $user->last_name;
-                $email->Subject   = 'Invoice from' . $user->first_name . ' ' . $user->last_name;
-                $email->Body      = 'Please find invoice attached';
+                $email->Sender = $user->email;
+                $email->Subject = 'Invoice from ' . $user->first_name . ' ' . $user->last_name;
+                $email->Body = $invoice_message;
                 $email->AddAddress($client_email);
 
-                $file_to_attach = 'invoice.pdf';
-
-
+                $file_to_attach = 'invoice-' . $random . '.pdf';
                 $email->AddAttachment($file_to_attach, 'Invoice.pdf' );
                 $email->Send();
+
+                unlink('invoice-' . $random . '.pdf');
 
                 App::flash('message', 'Invoice sent!');
                 Response::redirect($this->siteUrl('invoices/pending'));
@@ -188,7 +191,7 @@ class InvoiceController extends \User\BaseController
 
             }catch(\Exception $e){
                 App::flash('message', $e->getMessage());
-                App::flash('email', $email);
+                App::flash('email', $client_email);
 
                 Response::redirect($this->siteUrl('invoices/new'));
             }
