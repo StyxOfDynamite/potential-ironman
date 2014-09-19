@@ -76,7 +76,7 @@ Route::get('/invoices/pending', function() {
         }
     }, 'Invoices\Controllers\InvoiceController:pending');
 
-Route::get('/invoices/pending', function() {
+Route::get('/invoices/paid', function() {
     if(!Sentry::check()) {
             Response::redirect(App::urlFor('login'));
         }

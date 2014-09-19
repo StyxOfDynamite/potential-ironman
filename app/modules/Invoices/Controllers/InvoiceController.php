@@ -228,7 +228,15 @@ class InvoiceController extends \User\BaseController
 
     public function paid()
     {
+        $user = Sentry::getUser();
+        $invoices = User::find($user->id)->invoices()->where('paid', '=', '1')->get();
 
+        $this->data['title'] = 'Paid Invoices';
+        $this->data['invoices'] = $invoices;
+
+
+        /** render the template */
+        App::render('@invoices/paid/index.twig', $this->data);
     }
 
     public function pending()
@@ -236,7 +244,7 @@ class InvoiceController extends \User\BaseController
         $user = Sentry::getUser();
         $invoices = User::find($user->id)->invoices()->where('paid', '=', '0')->get();
 
-        $this->data['title'] = 'Invoices';
+        $this->data['title'] = 'Pending Invoices';
         $this->data['invoices'] = $invoices;
         $this->loadJs('moment.js');
         $this->loadJs('jquery-ui.min.js');
