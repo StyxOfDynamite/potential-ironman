@@ -196,7 +196,9 @@ class InvoiceController extends \User\BaseController
                 Response::redirect($this->siteUrl('invoices/new'));
             }
         }else{
-            $this->loadJs('app/new-invoice.js', ['position' => 'after:jquery-1.10.2.js']);
+            $this->loadCss('jquery-ui.min.css');
+            $this->loadJs('jquery-ui.min.js');
+            $this->loadJs('app/new-invoice.js');
             App::render('@invoices/new/index.twig', $this->data);
         }
     }

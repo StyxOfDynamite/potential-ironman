@@ -1,3 +1,4 @@
 $(function() {
-	$( "#due_date" ).datepicker();
+	$('#due_date').datepicker({dateFormat: 'dd/mm/yy'});
+
  });
