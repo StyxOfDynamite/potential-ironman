@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:transform version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format">
+  <xsl:template match="/">
+    <fo:root font-size="11"
+    font-family="Helvetica,sans-serif" line-height="1.2">
+      <fo:layout-master-set>
+        <!--BRIEF-->
+        <fo:simple-page-master master-name="first">
+          <fo:region-body margin-top="9.85cm" margin-bottom="2cm"
+          margin-left="2.5cm" margin-right="1.5cm" />
+          <fo:region-before region-name="header-first" />
+          <fo:region-after region-name="footer-first" />
+          <fo:region-start region-name="left-first" />
+          <fo:region-end region-name="right-first" />
+        </fo:simple-page-master>
+        <!--BRIEF-->
+        <fo:simple-page-master master-name="rest" page-height="29.7cm"
+        page-width="21cm">
+          <fo:region-body margin-top="4cm" margin-bottom="2cm"
+          margin-left="2.5cm" margin-right="2cm" />
+          <fo:region-before region-name="header-rest" />
+          <fo:region-after region-name="footer-rest" />
+          <fo:region-start region-name="left-rest" />
+          <fo:region-end region-name="right-rest" />
+        </fo:simple-page-master>
+        <fo:page-sequence-master master-name="document">
+          <fo:repeatable-page-master-alternatives>
+            <!--BRIEF-->
+            <fo:conditional-page-master-reference page-position="first"
+            master-reference="first" />
+            <!--BRIEF-->
+            <fo:conditional-page-master-reference page-position="rest"
+            master-reference="rest" />
+          </fo:repeatable-page-master-alternatives>
+        </fo:page-sequence-master>
+      </fo:layout-master-set>
+      <fo:page-sequence master-reference="document">
+        <!--BRIEF-->
+        <fo:static-content flow-name="header-first">
+          <!-- Begin line -->
+          <fo:block-container position="absolute" left="0cm" top="0cm">
+            <fo:block>
+              <fo:leader leader-pattern="rule" leader-length="10.425cm"
+              rule-style="solid" rule-thickness="0.5cm" color="#AEAFB3" />
+            </fo:block>
+          </fo:block-container>
+          <fo:block-container position="absolute" right="0cm" top="0cm"
+          width="10.5cm">
+            <fo:block>
+              <fo:leader leader-pattern="rule" leader-length="10.5cm"
+              rule-style="solid" rule-thickness="0.5cm" color="#0c6EB5" />
+            </fo:block>
+          </fo:block-container>
+          
+          <!-- Begin to address field -->
+          <fo:block-container position="absolute" top="5cm" left="2.5cm"
+          line-height="2.0">
+            <fo:block>
+              <xsl:value-of select="doc/recipient/field1" />
+            </fo:block>
+            <fo:block>
+              <xsl:value-of select="doc/recipient/field2" />
+            </fo:block>
+            <fo:block>
+              <xsl:value-of select="doc/recipient/field3" />
+            </fo:block>
+            <fo:block>
+              <xsl:value-of select="doc/recipient/field4" />
+            </fo:block>
+            <fo:block>
+              <xsl:value-of select="doc/recipient/field5" />
+            </fo:block>
+          </fo:block-container>
+
+          <!-- Begin contact data -->
+          <fo:block-container color="#AEAFB3" position="absolute" left="11.5cm"
+          top="2.5cm" font-size="0.7em" line-height="1.5" linefeed-treatment="preserve">
+            <fo:block>
+              <xsl:value-of select="doc/sender/name" />
+            </fo:block>
+            <fo:block>
+              <xsl:value-of select="doc/sender/company" />
+            </fo:block>
+          </fo:block-container>
+
+          <!-- Begin Bank account -->
+          <fo:block-container color="#AEAFB3" position="absolute" left="16cm"
+          top="2.5cm" font-size="0.7em" line-height="1.5" linefeed-treatment="preserve">
+            <fo:block color="#0C6EB5">Account Number:</fo:block>
+            <fo:block>
+              <xsl:value-of select="doc/sender/account" />
+            </fo:block>
+            <fo:block color="#0C6EB5">Sort Code:</fo:block>
+            <fo:block>
+              <xsl:value-of select="doc/sender/sortcode" />
+            </fo:block>
+          </fo:block-container>
+
+          <fo:block-container position="absolute" top="9cm" left="2cm">
+            <fo:block>
+              <fo:leader leader-pattern="rule" leader-length="0.35cm"
+              rule-style="solid" rule-thickness="0.2mm" color="#0C6EB5"
+              vertical-align="bottom" text-align="left" />
+            </fo:block>
+          </fo:block-container>
+          <fo:block-container position="absolute" top="9.05cm" left="2cm"
+          reference-orientation="270" height="0.4cm">
+            <fo:block>
+              <fo:leader leader-pattern="rule" leader-length="0.35cm"
+              rule-style="solid" rule-thickness="0.2mm" color="#0C6EB5"
+              vertical-align="bottom" />
+            </fo:block>
+          </fo:block-container>
+          <fo:block-container position="absolute" top="9cm" right="10.5cm"
+          height="0.5cm" width="0.75cm">
+            <fo:block>
+              <fo:leader leader-pattern="rule" leader-length="0.35cm"
+              rule-style="solid" rule-thickness="0.2mm" color="#0C6EB5"
+              vertical-align="bottom" text-align="left" />
+            </fo:block>
+          </fo:block-container>
+          <fo:block-container position="absolute" top="9.05cm" right="10.5cm"
+          reference-orientation="270" height="0.4cm">
+            <fo:block>
+              <fo:leader leader-pattern="rule" leader-length="0.35cm"
+              rule-style="solid" rule-thickness="0.2mm" color="#0C6EB5"
+              vertical-align="bottom" />
+            </fo:block>
+          </fo:block-container>
+        </fo:static-content>
+        <!--BRIEF-->
+
+        <fo:static-content flow-name="header-rest">
+          <!-- Begin line -->
+          <fo:block-container position="absolute" left="0cm" top="0cm">
+            <fo:block>
+              <fo:leader leader-pattern="rule" leader-length="10.425cm"
+              rule-style="solid" rule-thickness="0.5cm" color="#AEAFB3" />
+            </fo:block>
+          </fo:block-container>
+          <fo:block-container position="absolute" right="0cm" top="0cm"
+          width="10.5cm">
+            <fo:block>
+              <fo:leader leader-pattern="rule" leader-length="10.5cm"
+              rule-style="solid" rule-thickness="0.5cm" color="#0c6EB5" />
+            </fo:block>
+          </fo:block-container>
+        </fo:static-content>
+
+        <!--BRIEF-->
+
+
+        <fo:static-content flow-name="footer-first">
+          <fo:block-container position="absolute" left="0.5cm" bottom="0.7cm"
+          height="0.5cm">
+            <fo:block text-align="center" font-size="0.7em" color="#AEAFB3">
+              <xsl:value-of select="doc/sender/company" />
+            </fo:block>
+            <fo:block>
+              <xsl:value-of select="doc/sender/name" />
+            </fo:block>
+          </fo:block-container>
+          <!-- Begin line -->
+          <fo:block-container position="absolute" left="0cm" bottom="0cm"
+          height="0.5cm">
+            <fo:block>
+              <fo:leader leader-pattern="rule" leader-length="10.425cm"
+              rule-style="solid" rule-thickness="0.5cm" color="#AEAFB3" />
+            </fo:block>
+          </fo:block-container>
+          <fo:block-container position="absolute" right="0cm" bottom="0cm"
+          width="10.5cm" height="0.5cm">
+            <fo:block>
+              <fo:leader leader-pattern="rule" leader-length="10.5cm"
+              rule-style="solid" rule-thickness="0.5cm" color="#0c6EB5" />
+            </fo:block>
+          </fo:block-container>
+        </fo:static-content>
+        <!--BRIEF-->
+        <fo:static-content flow-name="left-first">
+          <!-- Begin folding mark -->
+          <fo:block-container position="absolute" top="10.5cm" left="0cm">
+            <fo:block>
+              <fo:leader leader-pattern="rule" vertical-align="top"
+              leader-length="0.2cm" rule-style="solid" rule-thickness="0.04cm"
+              color="#AEAFB3" />
+            </fo:block>
+          </fo:block-container>
+          <fo:block-container position="absolute" top="14.85cm" left="0.5cm">
+            <fo:block>
+              <fo:leader leader-pattern="rule" vertical-align="top"
+              leader-length="0.2cm" rule-style="solid" rule-thickness="0.04cm"
+              color="#AEAFB3" />
+            </fo:block>
+          </fo:block-container>
+        </fo:static-content>
+        <!--BRIEF-->
+        <fo:static-content flow-name="left-rest">
+          <fo:block text-align-last="center"></fo:block>
+        </fo:static-content>
+        <!--BRIEF-->
+        <fo:static-content flow-name="right-first">
+          <fo:block text-align="center"></fo:block>
+        </fo:static-content>
+        <!--BRIEF-->
+        <fo:static-content flow-name="right-rest">
+          <fo:block text-align-last="center"></fo:block>
+        </fo:static-content>
+        <fo:flow flow-name="xsl-region-body">
+          <fo:block>
+            <fo:block font-weight="700" margin-top="1em" margin-bottom="1.5em">
+              <xsl:value-of select="doc/subject" />
+            </fo:block>
+            <!--RECHNUNG-->
+            <!-- Start Description -->
+            <fo:table line-height="1.5">
+            <fo:table-column column-width="25%" />
+            <fo:table-column column-width="25%" />
+            <fo:table-column column-width="25%" />
+            <fo:table-column column-width="25%" />
+            <fo:table-body>
+              <fo:table-row>
+                <fo:table-cell font-weight="700">
+                  <fo:block>Contact:</fo:block>
+                </fo:table-cell>
+                <fo:table-cell>
+                  <fo:block>
+                    <xsl:value-of select="doc/invoice/clientname" />
+                  </fo:block>
+                </fo:table-cell>
+              </fo:table-row>
+              <fo:table-row>
+                <fo:table-cell font-weight="700">
+                  <fo:block>Invoice Date:</fo:block>
+                </fo:table-cell>
+                <fo:table-cell>
+                  <fo:block>
+                    <xsl:value-of select="doc/invoice/duedate" />
+                  </fo:block>
+                </fo:table-cell>
+                <fo:table-cell font-weight="700">
+                  <fo:block>Invoice Number:</fo:block>
+                </fo:table-cell>
+                <fo:table-cell>
+                  <fo:block>
+                    <xsl:value-of select="doc/invoice/id" />
+                  </fo:block>
+                </fo:table-cell>
+              </fo:table-row>
+            </fo:table-body>
+          </fo:table>
+            <!-- Start table -->
+            <fo:table margin-top="2em" line-height="1.5">
+              <fo:table-column column-width="30%" />
+              <fo:table-column column-width="20%" />
+              <fo:table-column column-width="25%" />
+              <fo:table-column column-width="25%" />
+              <fo:table-header font-weight="700" border-bottom="solid"
+              border-top="solid" border-collapse="collapse" >
+              <fo:table-row>
+                  <fo:table-cell>
+                    <fo:block>
+                      Item
+                    </fo:block>
+                  </fo:table-cell>
+                  <fo:table-cell>
+                    <fo:block>
+                      Quantity
+                    </fo:block>
+                  </fo:table-cell>
+                  <fo:table-cell text-align="right" margin-right="5%">
+                    <fo:block>
+                      Unit Price
+                    </fo:block>
+                  </fo:table-cell>
+                  <fo:table-cell text-align="right" margin-right="5%">
+                    <fo:block>
+                      Total
+                    </fo:block>
+                  </fo:table-cell>
+                </fo:table-row>
+                <xsl:for-each select="doc/invoice/items/item">
+                <fo:table-row>
+                  <fo:table-cell>
+                    <fo:block>
+                      <xsl:value-of select="name" />
+                    </fo:block>
+                  </fo:table-cell>
+                  <fo:table-cell>
+                    <fo:block>
+                      <xsl:value-of select="quantity" />
+                    </fo:block>
+                  </fo:table-cell>
+                  <fo:table-cell text-align="right" margin-right="5%">
+                    <fo:block>
+                      <xsl:value-of select="price" />
+                    </fo:block>
+                  </fo:table-cell>
+                  <fo:table-cell text-align="right" margin-right="5%">
+                    <fo:block>
+                      <xsl:value-of select="total" />
+                    </fo:block>
+                  </fo:table-cell>
+                </fo:table-row>
+              </xsl:for-each>
+              </fo:table-header>
+              <fo:table-footer border-top="double 3px"
+              border-bottom="double 3px">
+
+                <fo:table-row border-bottom="solid">
+                  <fo:table-cell number-columns-spanned="4">
+                    <fo:block />
+                  </fo:table-cell>
+                </fo:table-row>
+
+                <fo:table-row border-bottom="solid">
+                  <fo:table-cell number-columns-spanned="2">
+                    <fo:block font-weight="700">Total</fo:block>
+                  </fo:table-cell>
+                  <fo:table-cell number-columns-spanned="2" text-align="right" margin-right="5%">
+                    <fo:block font-weight="700">
+                      <xsl:value-of select="doc/invoice/total" />
+                    </fo:block>
+                  </fo:table-cell>
+                </fo:table-row>
+
+              </fo:table-footer>
+              <fo:table-body>
+                  <fo:table-row> 
+                    <fo:table-cell>
+                      <fo:block> </fo:block>
+                    </fo:table-cell>
+                  </fo:table-row>
+              </fo:table-body>
+            </fo:table>
+            <!--RECHNUNG-->
+            <!-- Table is a workaround, to keep "linespace-preserve" on different page-masters without reusing content a second time-->
+            <fo:table margin-top="2em">
+              <fo:table-body>
+                <fo:table-row>
+                  <fo:table-cell>
+                    <fo:block>
+            <xsl:call-template name="convert-linefeeds-to-paragraph">
+              <xsl:with-param name="text" select="doc/text" />
+              <xsl:with-param name="paragraph-height" select="'1.6'" />
+            </xsl:call-template>
+                    </fo:block>
+                  </fo:table-cell>
+                </fo:table-row>
+              </fo:table-body>
+            </fo:table>
+            <!--<xsl:apply-templates/>-->
+          </fo:block>
+        </fo:flow>
+      </fo:page-sequence>
+    </fo:root>
+  </xsl:template>
+  <!-- Begin Macros -->
+  <xsl:template name="convert-linefeeds-to-paragraph">
+    <xsl:param name="text" />
+    <xsl:param name="first" select="'1'" />
+    <xsl:param name="paragraph-height" select="'1em'" />
+    <xsl:param name="separator" select="'&#10;'" />
+    <xsl:choose>
+      <xsl:when test="not(contains($text, $separator))">
+        <xsl:value-of select="normalize-space($text)" />
+      </xsl:when>
+      <xsl:when test="not(substring-after($text, $separator))">
+        <xsl:value-of select="normalize-space($text)" />
+      </xsl:when>
+      <xsl:when test="not(normalize-space(substring-before($text, $separator))) and ($first = 1)">
+        <xsl:call-template name="convert-linefeeds-to-paragraph">
+          <xsl:with-param name="text"
+          select="substring-after($text, $separator)" />
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="normalize-space(substring-before($text, $separator))" />
+        <fo:block>
+        <xsl:attribute name="line-height">
+          <xsl:value-of select="$paragraph-height" />
+        </xsl:attribute>&#160;</fo:block>
+        <xsl:call-template name="convert-linefeeds-to-paragraph">
+          <xsl:with-param name="first" select="'0'"/>
+          <xsl:with-param name="text"
+          select="substring-after($text, $separator)" />
+        </xsl:call-template>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+</xsl:transform>
