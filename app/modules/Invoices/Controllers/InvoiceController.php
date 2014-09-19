@@ -56,7 +56,8 @@ class InvoiceController extends \User\BaseController
         if(Input::post()) {
             /* Invoice details */
             $client_email = Input::post('email');
-            $due_date = Input::post('due_date');
+            $due_date = str_replace('/', '-', Input::post('due_date'));
+            $due_date = date("Y-m-d", strtotime($due_date));
             $reminders = true;
             $paid = false;
             $client_name = Input::post('client_name');
@@ -94,6 +95,7 @@ class InvoiceController extends \User\BaseController
                 $invoice->dueDate = $due_date;
                 $invoice->reminders = $reminders;
                 $invoice->paid = $paid;
+                $invoice->total = $invoice_total;
                 $invoice->save();
 
                 function generatePdf($template, $array)
@@ -232,12 +234,13 @@ class InvoiceController extends \User\BaseController
     public function pending()
     {
         $user = Sentry::getUser();
-        $invoices = User::find($user->id)->invoices;
-
-
+        $invoices = User::find($user->id)->invoices()->where('paid', '=', '0')->get();
 
         $this->data['title'] = 'Invoices';
         $this->data['invoices'] = $invoices;
+        $this->loadJs('moment.js');
+        $this->loadJs('jquery-ui.min.js');
+        $this->loadJs('app/pending-invoices.js');
 
 
         /** render the template */
