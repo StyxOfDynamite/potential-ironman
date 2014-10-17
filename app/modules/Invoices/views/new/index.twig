@@ -13,37 +13,37 @@
         <!-- Client Details -->
         <div class="form-group">
             <label for="email" class="col-lg-2 control-label">Client Email</label>
-            <div class="col-lg-2">
+            <div class="col-lg-3">
                 <input type="text" class="input-sm form-control validate[required]" name="email" id="email">
             </div>
             <label for="bcc" class="col-lg-2 control-label">Bcc yourself?</label>
-            <div class="col-lg-2">
+            <div class="col-lg-3">
                 <input type="checkbox" class="input-sm form-control" name="bcc"/>
             </div>
         </div>
         <div class="form-group">
             <label for="client_name" class="col-lg-2 control-label">Client Name</label>
-            <div class="col-lg-2">
+            <div class="col-lg-3">
                 <input type="text" class="input-sm form-control validate[required]" name="client_name" id="client_name">
             </div>
         </div>
         <div class="form-group">
             <label for="clientAddress1" class="col-lg-2 control-label">House Name / Number</label>
-            <div class="col-lg-2">
+            <div class="col-lg-3">
                 <input type="text" class="input-sm form-control validate[required]" name="clientAddress1" id="clientAddress1">
             </div>
             <label for="clientAddress2" class="col-lg-2 control-label">Street</label>
-            <div class="col-lg-2">
+            <div class="col-lg-3">
                 <input type="text" class="input-sm form-control validate[required]" name="clientAddress2" id="clientAddress2">
             </div>
         </div>
         <div class="form-group">
             <label for="clientAddress3" class="col-lg-2 control-label">Town / City</label>
-            <div class="col-lg-2">
+            <div class="col-lg-3">
                 <input type="text" class="input-sm form-control validate[required]" name="clientAddress3" id="clientAddress3">
             </div>
             <label for="clientAddress4" class="col-lg-2 control-label">Post Code</label>
-            <div class="col-lg-2">
+            <div class="col-lg-3">
                 <input type="text" class="input-sm form-control validate[required]" name="clientAddress4" id="clientAddress4">
             </div>
         </div>
@@ -52,13 +52,13 @@
 
         <div class="form-group">
             <label for="due_date" class="col-lg-2 control-label">Due Date</label>
-            <div class="col-lg-2">
+            <div class="col-lg-3">
                 <input type="text" class="input-sm form-control validate[required]" name="due_date" id="due_date">
             </div>
         </div>
         <div class="form-group">
             <label for="Message" class="col-lg-2 control-label">Message</label>
-            <div class="col-lg-6">
+            <div class="col-lg-8">
                 <textarea rows="5" class="input-sm form-control validate[required]" name="message" id="message"></textarea>
             </div>
         </div>
@@ -83,19 +83,25 @@
             <div class="col-lg-2">
                 <!-- spacer -->
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-3">
                 <a id="add-item" class="btn btn-xs btn-success" href="#">Add additional item...</a>
             </div>
         </div>
         <div class="form-group">
             <label for="total" class="col-lg-2 control-label">Total</label>
-            <div class="col-lg-2">
-                <input type="text" class="input-sm form-control validate[required]" name="total" id="total" placeholder="Invoice Total">
+            <div class="col-lg-3">
+                <input type="text" class="input-sm form-control validate[required]" name="total" id="total" placeholder="Invoice Total" readonly="true">
             </div>
         </div>
 
         <div class="form-group">
-             <button type="submit" class="btn btn-md btn-success btn-block">Create</button>
+            <div class="col-lg-2">
+                <!-- spacer -->
+            </div>
+            <div class="col-lg-2 text-center">
+                <button type="submit" class="btn btn-md btn-success btn-block">Create</button>
+            </div>
+
         </div>
     </form>
 </div>
