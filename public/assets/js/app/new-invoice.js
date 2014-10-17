@@ -46,4 +46,10 @@ $(function() {
 		$("#total").val(total);
 	});
 
+	$("#remove-item").click(function() {
+		if ($('.input-row').length > 1)  {
+			$('.input-row:last').remove();
+		}
+	});
+
  });
