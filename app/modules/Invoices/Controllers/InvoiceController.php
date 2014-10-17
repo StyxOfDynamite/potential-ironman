@@ -205,6 +205,7 @@ class InvoiceController extends \User\BaseController
             }
         }else{
             $this->loadCss('jquery-ui.min.css');
+            $this->loadCss('new-invoice.css');
             $this->loadJs('jquery-ui.min.js');
             $this->loadJs('app/new-invoice.js');
             App::render('@invoices/new/index.twig', $this->data);
