@@ -4,4 +4,4 @@ dev
 composer.phar
 app/storage
 public/invoice.pdf
-
+*.zip
