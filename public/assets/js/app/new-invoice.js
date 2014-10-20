@@ -14,7 +14,7 @@ $(function() {
   });
 
 	/** Add additional item lines */
-	$('#add-item').click(function(){
+	$('#add-item').click(function(e){
 		$('.input-row:first').clone().insertAfter('.input-row:last');
 		$('input[name="item_qty[]"],input[name="item_price[]"]').on("change",function () {
 			var $container = $(this).closest('.form-group');
@@ -33,6 +33,7 @@ $(function() {
 		});
 		/** trigger change event so total is updated to inlcude newly added line */
 		$('input[name="item_total[]"').change();
+		e.preventDefault();
 	});
 
 	
@@ -46,10 +47,11 @@ $(function() {
 		$("#total").val(total);
 	});
 
-	$("#remove-item").click(function() {
+	$("#remove-item").click(function(e) {
 		if ($('.input-row').length > 1)  {
 			$('.input-row:last').remove();
 		}
+		e.preventDefault();
 	});
 
  });
