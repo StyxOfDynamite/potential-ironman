@@ -42,7 +42,7 @@ class InvoiceController extends \User\BaseController
         App::render('@invoices/list/list.twig', $this->data);
     }
 
-    public function show()
+    public function show($id)
     {
 
     }
@@ -217,12 +217,45 @@ class InvoiceController extends \User\BaseController
 
     }
 
-    public function update()
+    public function update($id)
     {
+        $success = false;
+        $message = '';
+        $invoice = null;
+        $code = 0;
 
+        try {
+            $input = Input::put();
+            /** in case request come from post http form */
+            $input = is_null($input) ? Input::post() : $input;
+
+
+            /** get invoice by id */
+            $invoice = Invoice::find($id);
+            $invoice->paid = $input['paid'];
+
+            $success = $invoice->save();
+            $code    = 200;
+            $message = 'Invoice updated sucessfully';
+        } catch (Exception $e) {
+            $message = $e->getMessage();
+            $code    = 500;
+        }
+
+        if(Request::isAjax()){
+            Response::headers()->set('Content-Type', 'application/json');
+            Response::setBody(json_encode(
+                array(
+                    'success' => $success,
+                    'data' => ($invoice) ? $invoice->toArray() : $invoice,
+                    'message' => $message,
+                    'code' => $code
+                )
+            ));
+        }
     }
 
-    public function destroy()
+    public function destroy($id)
     {
 
     }
@@ -247,9 +280,11 @@ class InvoiceController extends \User\BaseController
 
         $this->data['title'] = 'Pending Invoices';
         $this->data['invoices'] = $invoices;
-        $this->loadJs('moment.js');
         $this->loadJs('jquery-ui.min.js');
-        $this->loadJs('app/pending-invoices.js');
+        $this->loadJs('app/pending-invoice.js');
+
+        /** publish necessary js  variable */
+        $this->publish('baseUrl', $this->data['baseUrl']);
 
 
         /** render the template */

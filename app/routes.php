@@ -55,8 +55,6 @@ Route::get('/home', function() {
         }
     }, 'User\UserController:home');
 
-
-
 /** Route to invoices */
 Route::get('/invoices/new', function() {
     if(!Sentry::check()) {
