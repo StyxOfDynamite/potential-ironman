@@ -56,8 +56,4 @@ class Initialize extends \SlimStarter\Module\Initializer{
     public function registerAdminRoute(){
         Route::resource('/invoice', 'Invoices\Controllers\InvoiceController');
     }
-
-    public function registerPublicRoute() {
-        Route::resource('/invoice', 'Invoices\Controllers\InvoiceController');
-    }
 }

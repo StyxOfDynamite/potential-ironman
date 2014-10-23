@@ -217,7 +217,7 @@ class InvoiceController extends \User\BaseController
 
     }
 
-    public function update($id)
+    public function mark_invoice_paid($id)
     {
         $success = false;
         $message = '';
@@ -225,33 +225,28 @@ class InvoiceController extends \User\BaseController
         $code = 0;
 
         try {
-            $input = Input::put();
-            /** in case request come from post http form */
-            $input = is_null($input) ? Input::post() : $input;
+            
+            $user = Sentry::getUser();
 
+            $invoice = User::find($user->id)->invoices()->where('id', '=', $id)->firstOrFail();
 
-            /** get invoice by id */
-            $invoice = Invoice::find($id);
-            $invoice->paid = $input['paid'];
+            $invoice->paid = true;
 
             $success = $invoice->save();
-            $code    = 200;
             $message = 'Invoice updated sucessfully';
+            
+            if ($success) {
+                App::flash('message', $message);
+                Response::redirect($this->siteUrl('invoices/pending'));   
+            } else {
+                throw new Exception("Error Processing Request", 1);
+            }
+            
+
         } catch (Exception $e) {
             $message = $e->getMessage();
-            $code    = 500;
-        }
-
-        if(Request::isAjax()){
-            Response::headers()->set('Content-Type', 'application/json');
-            Response::setBody(json_encode(
-                array(
-                    'success' => $success,
-                    'data' => ($invoice) ? $invoice->toArray() : $invoice,
-                    'message' => $message,
-                    'code' => $code
-                )
-            ));
+            App::flash('message', $message);
+            Response::redirect($this->siteUrl('invoices/pending'));
         }
     }
 

@@ -80,6 +80,12 @@ Route::get('/invoices/paid', function() {
         }
     }, 'Invoices\Controllers\InvoiceController:paid');
 
+Route::get('/invoice/paid/:id', function() {
+    if(!Sentry::check()) {
+            Response::redirect(App::urlFor('login'));
+        }
+    }, 'Invoices\Controllers\InvoiceController:mark_invoice_paid')->name('mark-invoice-paid');
+
 foreach (Module::getModules() as $module) {
     $module->registerPublicRoute();
 }

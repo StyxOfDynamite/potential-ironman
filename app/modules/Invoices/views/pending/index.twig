@@ -32,7 +32,10 @@
                             <a id="reminder" data-id="{{ invoice.id }}" class="btn btn-xs btn-warning" href="#"><i class="fa fa-fw fa-lg fa-envelope"></i>Send Reminder</a>
                         </td>
                         <td class="text-center">
-                            <a id="paid" data-id="{{ invoice.id }}" class="btn btn-xs btn-success btn-invoice-paid" href="#"><i class="fa fa-fw fa-lg fa-money"></i>Paid</a>
+                            <a id="paid" data-id="{{ invoice.id }}" class="btn btn-xs btn-success btn-invoice-paid" href="{{ urlFor('mark-invoice-paid', {"id": invoice.id, "name": "luke"}) }}">
+                                <i class="fa fa-fw fa-lg fa-money"></i>
+                                Paid
+                            </a>
                         </td>
 
                     </tr>
