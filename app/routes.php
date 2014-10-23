@@ -86,6 +86,12 @@ Route::get('/invoice/paid/:id', function() {
         }
     }, 'Invoices\Controllers\InvoiceController:mark_invoice_paid')->name('mark-invoice-paid');
 
+Route::get('/invoice/remind/:id', function() {
+    if(!Sentry::check()) {
+            Response::redirect(App::urlFor('login'));
+        }
+    }, 'Invoices\Controllers\InvoiceController:send_invoice_reminder')->name('send-invoice-reminder');
+
 foreach (Module::getModules() as $module) {
     $module->registerPublicRoute();
 }

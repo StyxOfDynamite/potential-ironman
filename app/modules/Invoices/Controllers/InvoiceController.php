@@ -185,6 +185,10 @@ class InvoiceController extends \User\BaseController
                 $email->Body = $invoice_message;
                 $email->AddAddress($client_email);
 
+                if(Input::post('bcc')) {
+                   $email->AddBcc($user->email);
+                }
+
                 $file_to_attach = 'invoice-' . $random . '.pdf';
                 $email->AddAttachment($file_to_attach, 'Invoice.pdf' );
                 $email->Send();
@@ -227,14 +231,49 @@ class InvoiceController extends \User\BaseController
         try {
             
             $user = Sentry::getUser();
-
             $invoice = User::find($user->id)->invoices()->where('id', '=', $id)->firstOrFail();
-
             $invoice->paid = true;
-
             $success = $invoice->save();
             $message = 'Invoice updated sucessfully';
             
+            if ($success) {
+                App::flash('message', $message);
+                Response::redirect($this->siteUrl('invoices/pending'));   
+            } else {
+                throw new Exception("Error Processing Request", 1);
+            }
+            
+
+        } catch (Exception $e) {
+            $message = $e->getMessage();
+            App::flash('message', $message);
+            Response::redirect($this->siteUrl('invoices/pending'));
+        }
+    }
+
+    public function send_invoice_reminder($id)
+    {
+         try {
+            
+            $user = Sentry::getUser();
+            $invoice = User::find($user->id)->invoices()->where('id', '=', $id)->firstOrFail();
+
+            $email = new \PHPMailer;
+            $email->From = $user->email;
+            $email->FromName  = $user->first_name . ' ' . $user->last_name;
+            $email->Sender = $user->email;
+            $email->Subject = 'Chasing Invoice: #' . $invoice->id;
+            $email->Body = "Where's my money!";
+            $email->AddAddress($invoice->clientEmail);
+            $email->AddBcc($user->email);
+
+            if ($email->Send()) {
+                $date = new DateTime();
+                $invoice->reminderSent = $date->getTimestamp();
+                $success = $invoice->save();
+                $message = 'Invoice reminder sent';
+            }
+
             if ($success) {
                 App::flash('message', $message);
                 Response::redirect($this->siteUrl('invoices/pending'));   
