@@ -269,7 +269,7 @@ class InvoiceController extends \User\BaseController
 
             if ($email->Send()) {
                 $date = new \DateTime();
-                $invoice->reminderSent = $date->getTimestamp();
+                $invoice->reminderSent = $date->format('Y-m-d');
                 $success = $invoice->save();
                 $message = 'Invoice reminder sent';
             }
