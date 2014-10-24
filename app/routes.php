@@ -86,7 +86,7 @@ Route::get('/invoice/paid/:id', function() {
         }
     }, 'Invoices\Controllers\InvoiceController:mark_invoice_paid')->name('mark-invoice-paid');
 
-Route::get('/invoice/remind/:id', function() {
+Route::post('/invoice/remind', function() {
     if(!Sentry::check()) {
             Response::redirect(App::urlFor('login'));
         }

@@ -1,0 +1,16 @@
+<form role="form" class="form-horizontal" id="invoice-reminder-message" action="{{ siteUrl('/invoice/remind') }}" method="post">
+    <input type="hidden" name="invoice-id" id="invoice-id">
+    <div class="form-group">
+        <label for="reminder-message" class="col-lg-4 control-label">Message</label>
+        <div class="col-lg-8">
+            <textarea class="input-sm form-control validate[required]" name="reminder-message" id='reminder-message'></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-7">
+            <!-- spacer -->
+        </div>
+        <div class="form-group">
+            <button class="btn btn-success" type="submit">Send</button>
+        </div>
+</form>

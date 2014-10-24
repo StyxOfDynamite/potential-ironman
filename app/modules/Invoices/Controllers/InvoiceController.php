@@ -251,10 +251,13 @@ class InvoiceController extends \User\BaseController
         }
     }
 
-    public function send_invoice_reminder($id)
+    public function send_invoice_reminder()
     {
          try {
-            
+
+            $id = Input::post('invoice-id');
+            $reminder_message = Input::post('reminder-message');
+
             $user = Sentry::getUser();
             $invoice = User::find($user->id)->invoices()->where('id', '=', $id)->firstOrFail();
 
@@ -262,21 +265,18 @@ class InvoiceController extends \User\BaseController
             $email->From = $user->email;
             $email->FromName  = $user->first_name . ' ' . $user->last_name;
             $email->Sender = $user->email;
-            $email->Subject = 'Chasing Invoice: #' . $invoice->id;
-            $email->Body = "Where's my money!";
+            $email->Subject = 'Re: Invoice: #' . $invoice->id . ' due on ' . $invoice->dueDate;
+            $email->Body = $reminder_message;
             $email->AddAddress($invoice->clientEmail);
             $email->AddBcc($user->email);
 
             if ($email->Send()) {
                 $date = new \DateTime();
                 $invoice->reminderSent = $date->format('Y-m-d');
-                $success = $invoice->save();
+                $invoice->save();
                 $message = 'Invoice reminder sent';
-            }
-
-            if ($success) {
                 App::flash('message', $message);
-                Response::redirect($this->siteUrl('invoices/pending'));   
+                Response::redirect($this->siteUrl('invoices/pending')); 
             } else {
                 throw new Exception("Error Processing Request", 1);
             }

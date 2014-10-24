@@ -29,7 +29,7 @@
                         <td class="text-center">{{ invoice.clientEmail }}</td>
                         <td class="text-center">{{ invoice.dueDate }}</td>
                         <td class="text-center">
-                            <a id="reminder" data-id="{{ invoice.id }}" class="btn btn-xs btn-warning btn-send-reminder" href="{{ urlFor('send-invoice-reminder', {"id": invoice.id}) }}"><i class="fa fa-fw fa-lg fa-envelope"></i>Send Reminder</a>
+                            <a id="reminder" data-id="{{ invoice.id }}" class="btn btn-xs btn-warning btn-send-reminder" href="#"><i class="fa fa-fw fa-lg fa-envelope"></i>Send Reminder</a>
                         </td>
                         <td class="text-center">
                             <a id="paid" data-id="{{ invoice.id }}" class="btn btn-xs btn-success btn-invoice-paid" href="{{ urlFor('mark-invoice-paid', {"id": invoice.id}) }}">
@@ -45,19 +45,15 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="invoice-modal">
+<div class="modal fade" id="reminder-modal">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="modal-title">invoice Form</h4>
+                <h4 class="modal-title" id="modal-title">Invoice Reminder</h4>
             </div>
             <div class="modal-body">
-                {% include '@usergroup/user/form.twig' %}
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-success btn-sm" id="btn-invoice-save" data-method="">Save</button>
+                {% include '@invoices/pending/form.twig' %}
             </div>
         </div>
     </div>
