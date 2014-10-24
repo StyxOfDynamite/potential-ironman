@@ -268,7 +268,7 @@ class InvoiceController extends \User\BaseController
             $email->AddBcc($user->email);
 
             if ($email->Send()) {
-                $date = new DateTime();
+                $date = new \DateTime();
                 $invoice->reminderSent = $date->getTimestamp();
                 $success = $invoice->save();
                 $message = 'Invoice reminder sent';
