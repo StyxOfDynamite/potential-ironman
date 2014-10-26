@@ -72,6 +72,8 @@ class InvoiceController extends \User\BaseController
             $invoice_message = Input::post('invoice-message');
             $email_message = Input::post('email-message');
             $invoice_total = Input::post('total');
+            $account_number = Input::post('account-number');
+            $sort_code = Input::post('sort-code');
             $items = array();
 
             for ($i=0; $i < count($item_name); $i++) {
@@ -158,6 +160,10 @@ class InvoiceController extends \User\BaseController
                         'field2' => $clientAddress2,
                         'field3' => $clientAddress3,
                         'field4' => $clientAddress4
+                    ),
+                    'sender' => array(
+                        'account' => $account_number,
+                        'sortcode' => $sort_code
                     ),
                     'invoice' => array(
                         'id' => $invoice->id,
