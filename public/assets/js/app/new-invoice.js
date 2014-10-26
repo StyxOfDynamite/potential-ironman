@@ -10,8 +10,7 @@ $(function() {
 
 	  	$('input[name="item_total[]"]',$container).val(qty * price);
 	  	$('input[name="item_total[]"]',$container).change();
-
-  });
+	  });
 
 	/** Add additional item lines */
 	$('#add-item').click(function(e){
@@ -28,26 +27,22 @@ $(function() {
 	  		$('input[name="item_total[]"]',$container).val(qty * price);
 	  		$('input[name="item_total[]"]',$container).change();
 	  	});
-	  	/** Sum inputs for invoice total */
-		$('input[name="item_total[]"').change(function() {
-			var total = 0;
-			$.each($("[name='item_total[]']"), function(index, value) {
-				total += parseFloat($(this).val());
-			});
-			$("#total").val(total);
-		});
 	});
 
-	
-
-	/** Sum inputs for invoice total */
-	$('input[name="item_total[]"').change(function() {
+	/** if any input rows change update the invoice total */
+	$('#invoice-items').on('change', 'input', function(e){
 		var total = 0;
 		$.each($("[name='item_total[]']"), function(index, value) {
 			total += parseFloat($(this).val());
 		});
-		$("#total").val(total);
+		if (!isNaN(total)) {
+			$("#total").val(total);
+		} else {
+			$("#total").val("???")
+		}
 	});
+
+
 
 	$("#remove-item").click(function(e) {
 		if ($('.input-row').length > 1)  {
