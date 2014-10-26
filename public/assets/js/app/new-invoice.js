@@ -15,7 +15,12 @@ $(function() {
 
 	/** Add additional item lines */
 	$('#add-item').click(function(e){
+		e.preventDefault();
+		/** clone first line and insert it */
 		$('.input-row:first').clone().insertAfter('.input-row:last');
+		/** clear the newly inserted inputs of values */
+		$(':input', '.input-row:last').val("");
+		/** ensure all item price and qty inputs have events attached to their change value */
 		$('input[name="item_qty[]"],input[name="item_price[]"]').on("change",function () {
 			var $container = $(this).closest('.form-group');
 	  		qty = Number($('input[name="item_qty[]"]',$container).val())||0,
@@ -31,9 +36,6 @@ $(function() {
 			});
 			$("#total").val(total);
 		});
-		/** trigger change event so total is updated to inlcude newly added line */
-		$('input[name="item_total[]"').change();
-		e.preventDefault();
 	});
 
 	
