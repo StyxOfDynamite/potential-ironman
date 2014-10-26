@@ -69,7 +69,8 @@ class InvoiceController extends \User\BaseController
             $item_qty = Input::post('item_qty');
             $item_price = Input::post('item_price');
             $item_total = Input::post('item_total');
-            $invoice_message = Input::post('message');
+            $invoice_message = Input::post('invoice-message');
+            $email_message = Input::post('email-message');
             $invoice_total = Input::post('total');
             $items = array();
 
@@ -182,7 +183,7 @@ class InvoiceController extends \User\BaseController
                 $email->FromName  = $user->first_name . ' ' . $user->last_name;
                 $email->Sender = $user->email;
                 $email->Subject = 'Invoice from ' . $user->first_name . ' ' . $user->last_name;
-                $email->Body = $invoice_message;
+                $email->Body = $email_message;
                 $email->AddAddress($client_email);
 
                 if(Input::post('bcc')) {
