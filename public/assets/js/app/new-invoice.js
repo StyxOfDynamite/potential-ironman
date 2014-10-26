@@ -50,6 +50,7 @@ $(function() {
 	$("#remove-item").click(function(e) {
 		if ($('.input-row').length > 1)  {
 			$('.input-row:last').remove();
+			$('input[name="item_total[]"').change();
 		}
 		e.preventDefault();
 	});
